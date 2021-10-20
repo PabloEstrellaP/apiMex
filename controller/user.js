@@ -79,6 +79,25 @@ class UserController{
             });
         }
     }
+
+    deleteUser = async ( req, res = response ) => {
+        try {
+            const { id } = req.params;
+
+            const deleteU = await User.findByIdAndDelete( id );
+
+            return res.status(200).json({
+                ok : true,
+                msg : 'Se ha borrado el usuario'
+            });
+            
+        } catch (error) {
+            return res.status(400).json({
+                ok : false,
+                msg : error
+            });
+        }
+    }
 }
 
 module.exports = new UserController();

@@ -36,12 +36,12 @@ class UserController{
 
     addUser = async ( req, res = response ) => {
         try {
-            const { name, lastName, email, pathImg, idAdmin } = req.body;
+            const { name, lastName, email, imgPath, idAdmin } = req.body;
             const newUser = new User({
                 name, 
                 lastName, 
                 email, 
-                pathImg, 
+                imgPath, 
                 idAdmin
             });
             await newUser.save();
@@ -59,13 +59,13 @@ class UserController{
 
     editUser = async ( req, res = response ) => {
         try {
-            const { name, lastName, email, pathImg, _id } = req.body;
+            const { name, lastName, email, imgPath, _id } = req.body;
             const editU = await User.findByIdAndUpdate( _id );
 
             editU.name = name;
             editU.lastName = lastName;
             editU.email = email;
-            editU.pathImg = pathImg;
+            editU.imgPath = imgPath;
             await editU.save();
 
             return res.status(200).json({

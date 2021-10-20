@@ -16,9 +16,8 @@ const User = Schema({
         required: true,
         unique:true
     },
-    pathImg: {
+    imgPath: {
         type: String,
-        required: true
     },
     idAdmin: {
         type: Number
